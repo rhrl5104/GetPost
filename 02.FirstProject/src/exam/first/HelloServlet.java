@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class HelloServlet
- */
-@WebServlet("*.first")
+ */             
+@WebServlet("/HelloServlet")	//URL Mapping
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,9 +29,24 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//한글처리
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		out.print("ddddd");
+		//form에서 넘어오는 애중에 name으로 넘어오는 값이 -> NAME로 들어감. 
+		String NAME = request.getParameter("name");
+		String ID = request.getParameter("id");
+		String PWD = request.getParameter("pwd");
+		
+
+		//out.println(NAME);
+		//out.println(ID);
+		//out.println(PWD);
+		
+		out.println("Hello - GET<br>");
+		out.println("이름 : " + NAME + "<br>");
 	}
 
 	/**
@@ -39,6 +54,23 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		//form에서 넘어오는 애중에 name으로 넘어오는 값이 -> NAME로 들어감. 
+		String NAME = request.getParameter("name");
+		String ID = request.getParameter("id");
+		String PWD = request.getParameter("pwd");
+		
+		//out.println(NAME);
+		//out.println(ID);
+		//out.println(PWD);
+		
+		//out.print("<html>");
+		out.print("Hello - POST<br>");
+		out.print("이름 : " + NAME + "<br>");
+		//out.print("</html>");
 	}
 
 }
